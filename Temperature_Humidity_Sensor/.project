@@ -249,6 +249,11 @@
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/esp-tls/esp_tls_mbedtls.c</location>
 		</link>
 		<link>
+			<name>esp_idf_components/esp_adc_cal/esp_adc_cal_common.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/esp_adc_cal/esp_adc_cal_common.c</location>
+		</link>
+		<link>
 			<name>esp_idf_components/esp_adc_cal/esp_adc_cal_esp32.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/esp_adc_cal/esp_adc_cal_esp32.c</location>
@@ -412,6 +417,11 @@
 			<name>esp_idf_components/esp_system/dbg_stubs.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/esp_system/dbg_stubs.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/esp_system/debug_stubs.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/esp_system/debug_stubs.c</location>
 		</link>
 		<link>
 			<name>esp_idf_components/esp_system/esp_err.c</name>
@@ -1009,6 +1019,11 @@
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/spi_flash/spi_flash_chip_mxic_opi.c</location>
 		</link>
 		<link>
+			<name>esp_idf_components/spi_flash/spi_flash_chip_th.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/spi_flash/spi_flash_chip_th.c</location>
+		</link>
+		<link>
 			<name>esp_idf_components/spi_flash/spi_flash_chip_winbond.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/spi_flash/spi_flash_chip_winbond.c</location>
@@ -1359,6 +1374,11 @@
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/esp-tls/esp-tls-crypto/esp_tls_crypto.c</location>
 		</link>
 		<link>
+			<name>esp_idf_components/esp_adc_cal/esp32c3/esp_adc_cal.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/esp_adc_cal/esp32c3/esp_adc_cal.c</location>
+		</link>
+		<link>
 			<name>esp_idf_components/esp_common/src/esp_err_to_name.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/esp_common/src/esp_err_to_name.c</location>
@@ -1514,6 +1534,11 @@
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/esp_hw_support/port/async_memcpy_impl_gdma.c</location>
 		</link>
 		<link>
+			<name>esp_idf_components/esp_hw_support/port/esp_memprot_conv.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/esp_hw_support/port/esp_memprot_conv.c</location>
+		</link>
+		<link>
 			<name>esp_idf_components/esp_ipc/src/esp_ipc.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/esp_ipc/src/esp_ipc.c</location>
@@ -1609,9 +1634,19 @@
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/esp_netif/lwip/esp_netif_sta_list.c</location>
 		</link>
 		<link>
+			<name>esp_idf_components/esp_phy/src/lib_printf.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/esp_phy/src/lib_printf.c</location>
+		</link>
+		<link>
 			<name>esp_idf_components/esp_phy/src/phy_init.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/esp_phy/src/phy_init.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/esp_phy/src/phy_override.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/esp_phy/src/phy_override.c</location>
 		</link>
 		<link>
 			<name>esp_idf_components/esp_rom/patches/esp_rom_crc.c</name>
@@ -2664,6 +2699,11 @@
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/esp_hw_support/port/esp32c3/esp_hmac.c</location>
 		</link>
 		<link>
+			<name>esp_idf_components/esp_hw_support/port/esp32c3/esp_memprot.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/esp_hw_support/port/esp32c3/esp_memprot.c</location>
+		</link>
+		<link>
 			<name>esp_idf_components/esp_hw_support/port/esp32c3/memprot.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/esp_hw_support/port/esp32c3/memprot.c</location>
@@ -3009,6 +3049,11 @@
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/mbedtls/mbedtls/library/cmac.c</location>
 		</link>
 		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/constant_time.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/constant_time.c</location>
+		</link>
+		<link>
 			<name>esp_idf_components/mbedtls/mbedtls/library/ctr_drbg.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/mbedtls/mbedtls/library/ctr_drbg.c</location>
@@ -3119,6 +3164,16 @@
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/mbedtls/mbedtls/library/memory_buffer_alloc.c</location>
 		</link>
 		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/mps_reader.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/mps_reader.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/mps_trace.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/mps_trace.c</location>
+		</link>
+		<link>
 			<name>esp_idf_components/mbedtls/mbedtls/library/nist_kw.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/mbedtls/mbedtls/library/nist_kw.c</location>
@@ -3189,6 +3244,71 @@
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/mbedtls/mbedtls/library/poly1305.c</location>
 		</link>
 		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/psa_crypto.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/psa_crypto.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/psa_crypto_aead.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/psa_crypto_aead.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/psa_crypto_cipher.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/psa_crypto_cipher.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/psa_crypto_client.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/psa_crypto_client.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/psa_crypto_driver_wrappers.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/psa_crypto_driver_wrappers.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/psa_crypto_ecp.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/psa_crypto_ecp.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/psa_crypto_hash.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/psa_crypto_hash.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/psa_crypto_mac.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/psa_crypto_mac.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/psa_crypto_rsa.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/psa_crypto_rsa.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/psa_crypto_se.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/psa_crypto_se.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/psa_crypto_slot_management.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/psa_crypto_slot_management.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/psa_crypto_storage.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/psa_crypto_storage.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/psa_its_file.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/psa_its_file.c</location>
+		</link>
+		<link>
 			<name>esp_idf_components/mbedtls/mbedtls/library/ripemd160.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/mbedtls/mbedtls/library/ripemd160.c</location>
@@ -3239,6 +3359,11 @@
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/mbedtls/mbedtls/library/ssl_cookie.c</location>
 		</link>
 		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/ssl_msg.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/ssl_msg.c</location>
+		</link>
+		<link>
 			<name>esp_idf_components/mbedtls/mbedtls/library/ssl_srv.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/mbedtls/mbedtls/library/ssl_srv.c</location>
@@ -3252,6 +3377,11 @@
 			<name>esp_idf_components/mbedtls/mbedtls/library/ssl_tls.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/mbedtls/mbedtls/library/ssl_tls.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/mbedtls/mbedtls/library/ssl_tls13_keys.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/mbedtls/mbedtls/library/ssl_tls13_keys.c</location>
 		</link>
 		<link>
 			<name>esp_idf_components/mbedtls/mbedtls/library/threading.c</name>
@@ -3749,6 +3879,21 @@
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/wpa_supplicant/src/eap_peer/eap_common.c</location>
 		</link>
 		<link>
+			<name>esp_idf_components/wpa_supplicant/src/eap_peer/eap_fast.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/wpa_supplicant/src/eap_peer/eap_fast.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/wpa_supplicant/src/eap_peer/eap_fast_common.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/wpa_supplicant/src/eap_peer/eap_fast_common.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/wpa_supplicant/src/eap_peer/eap_fast_pac.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/wpa_supplicant/src/eap_peer/eap_fast_pac.c</location>
+		</link>
+		<link>
 			<name>esp_idf_components/wpa_supplicant/src/eap_peer/eap_mschapv2.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/wpa_supplicant/src/eap_peer/eap_mschapv2.c</location>
@@ -3887,6 +4032,11 @@
 			<name>esp_idf_components/asio/asio/asio/src/asio.cpp</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v4.4/components/asio/asio/asio/src/asio.cpp</location>
+		</link>
+		<link>
+			<name>esp_idf_components/esp_system/port/arch/riscv/debug_stubs.c</name>
+			<type>1</type>
+			<location>C:/Users/tom/OneDrive/Documenten/Espressif/esp-idf-v4.4.1/components/esp_system/port/arch/riscv/debug_stubs.c</location>
 		</link>
 		<link>
 			<name>esp_idf_components/esp_system/port/arch/riscv/expression_with_stack.c</name>
