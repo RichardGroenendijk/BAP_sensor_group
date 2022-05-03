@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include "esp_log.h"
 #include "driver/i2c.h"
+#include "commands.h"
+#include "i2c_data.h"
 
 static const char *TAG = "i2c-simple-example";
 
