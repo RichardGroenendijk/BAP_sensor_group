@@ -7,6 +7,18 @@
 
 #include "commands.h"
 
+esp_err_t SHT35_read_measurements_periodic_mode(uint8_t *data, size_t read_size)
+{
+	uint8_t write_buffer[2] = {0xE0, 0x00};
+	uint8_t *buffer_ptr = write_buffer;
+	size_t write_size = 2;
+
+	if(read_size > 6)
+		return ESP_ERR_INVALID_ARG;
+
+	return i2c_master_write_read_device(I2C_MASTER_NUM, SHT35_SENSOR_ADDR, buffer_ptr, write_size, data, read_size, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
+}
+
 esp_err_t SHT35_heater(char enable)
 {
 	uint8_t write_buffer[2] = {0};
@@ -174,6 +186,3 @@ esp_err_t SHT35_clear_status_register(void)
 	return i2c_master_write_to_device(I2C_MASTER_NUM, SHT35_SENSOR_ADDR, buffer_ptr, size, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
 }
 
-
-
-// #define ESP_ERR_INVALID_ARG         0x102   /*!< Invalid argument */

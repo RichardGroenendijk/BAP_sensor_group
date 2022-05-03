@@ -12,8 +12,9 @@
 #include "driver/i2c.h"
 #include "i2c_data.h"
 
-//esp_err_t create_command(uint8_t *command, size_t length);
-
+esp_err_t SHT35_read_measurements_periodic_mode(uint8_t *data, size_t read_size);
+esp_err_t SHT35_heater(char enable);
+esp_err_t SHT35_periodic_data_acquisition(int measurements_per_minute, char repeatability);
 esp_err_t SHT35_soft_reset(void);
 esp_err_t SHT35_break_command(void);
 esp_err_t SHT35_ART_command(void);
