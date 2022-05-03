@@ -13,16 +13,6 @@
 
 static const char *TAG = "i2c-simple-example";
 
-#define I2C_MASTER_SCL_IO           18     				       /*!< GPIO number used for I2C master clock */
-#define I2C_MASTER_SDA_IO           19      				   /*!< GPIO number used for I2C master data  */
-#define I2C_MASTER_NUM              0          				   /*!< I2C master i2c port number, the number of i2c peripheral interfaces available will depend on the chip */
-#define I2C_MASTER_FREQ_HZ          400000                     /*!< I2C master clock frequency */
-#define I2C_MASTER_TX_BUF_DISABLE   0                          /*!< I2C master doesn't need buffer */
-#define I2C_MASTER_RX_BUF_DISABLE   0                          /*!< I2C master doesn't need buffer */
-#define I2C_MASTER_TIMEOUT_MS       1000
-
-#define SHT35_SENSOR_ADDR                 0x44
-
 
 /**
  * @brief Read a sequence of bytes from a MPU9250 sensor registers
@@ -84,6 +74,9 @@ void app_main(void)
     ESP_ERROR_CHECK(i2c_master_init());
     ESP_LOGI(TAG, "I2C initialized successfully");
 
+    // Simpel programma om te testen
+    ESP_ERROR_CHECK(SHT35_soft_reset());
+
 	int write_buffer = 0x212D; /*MSB+LSB*/
 
 	SHT35_register_write_byte(write_buffer);
@@ -94,8 +87,8 @@ void app_main(void)
 	uint8_t *Temp_Hum = data;
 	ESP_ERROR_CHECK(SHT35_register_read(SHT35_SENSOR_ADDR, Temp_Hum, len));
 
-
-
+	// Data acquisition mode aanzetten
+	ESP_ERROR_CHECK(SHT35_periodic_data_acquisition(30,'M'));
 
 
 
