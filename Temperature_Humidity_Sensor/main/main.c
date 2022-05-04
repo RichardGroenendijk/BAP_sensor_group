@@ -67,31 +67,57 @@ esp_err_t event_handler(void *ctx, system_event_t *event)
     return ESP_OK;
 }
 
-void app_main(void)
+void periodic_measurements_test()
 {
 	printf("weeeejohhhh\n");
 
     ESP_ERROR_CHECK(i2c_master_init());
     ESP_LOGI(TAG, "I2C initialized successfully");
 
-    // Simpel programma om te testen
-    ESP_ERROR_CHECK(SHT35_soft_reset());
 
-	int write_buffer = 0x212D; /*MSB+LSB*/
+    vTaskDelay(pdMS_TO_TICKS(10));
 
-	SHT35_register_write_byte(write_buffer);
-	printf("test\n");
+    ESP_ERROR_CHECK(SHT35_periodic_data_acquisition(60,'H'));
 
-	uint8_t data[6] = {0};
-	size_t len=sizeof(data);
-	uint8_t *Temp_Hum = data;
-	ESP_ERROR_CHECK(SHT35_register_read(SHT35_SENSOR_ADDR, Temp_Hum, len));
+	while(true)
+	{
+		vTaskDelay(pdMS_TO_TICKS(1000));
 
-	// Data acquisition mode aanzetten
-	ESP_ERROR_CHECK(SHT35_periodic_data_acquisition(30,'M'));
+		uint8_t data[6] = {0};
+		size_t len=sizeof(data);
+		uint8_t *Temp_Hum = data;
+		ESP_ERROR_CHECK(SHT35_read_measurements_periodic_mode(Temp_Hum, len));
 
+		float temperature = -45 + 175.0*((data[0] << 8) + data[1])/(65536.0 - 1);
+		float humidity = -49 + 315.0*((data[3] << 8) + data[4])/(65536.0 - 1);
+		printf("Temperature: %f\n", temperature);
+		printf("Humidity:    %f\n", humidity);
+	}
+}
 
+void app_main(void)
+{
+    ESP_ERROR_CHECK(i2c_master_init());
+    ESP_LOGI(TAG, "I2C initialized successfully");
 
+	ESP_ERROR_CHECK(SHT35_soft_reset());
+
+    vTaskDelay(pdMS_TO_TICKS(10));
+
+    while(true)
+    {
+		vTaskDelay(pdMS_TO_TICKS(1000));
+
+		uint8_t data[6] = {0};
+		size_t len=sizeof(data);
+		uint8_t *Temp_Hum = data;
+		ESP_ERROR_CHECK(SHT35_single_shot_data_acquisition(Temp_Hum, len,'E','L'));
+
+		float temperature = -45 + 175.0*((data[0] << 8) + data[1])/(65536.0 - 1);
+		float humidity = -49 + 315.0*((data[3] << 8) + data[4])/(65536.0 - 1);
+		printf("Temperature: %f\n", temperature);
+		printf("Humidity:    %f\n", humidity);
+    }
 
 	/* GPIO18 is SCL
 	 * GPIO19 is SDA

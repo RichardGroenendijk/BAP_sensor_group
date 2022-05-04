@@ -7,6 +7,74 @@
 
 #include "commands.h"
 
+esp_err_t SHT35_read_out_status_register(uint8_t *data, size_t read_size)
+{
+	uint8_t write_buffer[2] = {0xF3, 0x2D};
+	uint8_t *buffer_ptr = write_buffer;
+	size_t write_size = 2;
+
+	if(read_size > 3)
+		return ESP_ERR_INVALID_ARG;
+
+	return i2c_master_write_read_device(I2C_MASTER_NUM, SHT35_SENSOR_ADDR, buffer_ptr, write_size, data, read_size, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
+}
+
+esp_err_t SHT35_single_shot_data_acquisition(uint8_t *data, size_t read_size, char clock_stretching, char repeatability)
+{
+	esp_err_t err = ESP_OK;
+
+	uint8_t write_buffer[2] = {0};
+	uint8_t *buffer_ptr = write_buffer;
+	size_t write_size = 2;
+
+	if(read_size > 6)
+		err = ESP_ERR_INVALID_ARG;
+
+	if(clock_stretching == 'E')
+	{
+		write_buffer[0] = 0x2C;
+		switch(repeatability)
+		{
+			case 'H':
+				write_buffer[1] = 0x06;
+				break;
+			case 'M':
+				write_buffer[1] = 0x0D;
+				break;
+			case 'L':
+				write_buffer[1] = 0x10;
+				break;
+			default:
+				err = ESP_ERR_INVALID_ARG;
+		}
+	}
+	else if(clock_stretching == 'D')
+	{
+		write_buffer[0] = 0x24;
+		switch(repeatability)
+		{
+			case 'H':
+				write_buffer[1] = 0x00;
+				break;
+			case 'M':
+				write_buffer[1] = 0x0B;
+				break;
+			case 'L':
+				write_buffer[1] = 0x16;
+				break;
+			default:
+				err = ESP_ERR_INVALID_ARG;
+		}
+	}
+	else
+		err = ESP_ERR_INVALID_ARG;
+
+	if(err != ESP_OK)
+		return err;
+
+	return i2c_master_write_read_device(I2C_MASTER_NUM, SHT35_SENSOR_ADDR, buffer_ptr, write_size, data, read_size, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
+}
+
 esp_err_t SHT35_read_measurements_periodic_mode(uint8_t *data, size_t read_size)
 {
 	uint8_t write_buffer[2] = {0xE0, 0x00};

@@ -12,6 +12,8 @@
 #include "driver/i2c.h"
 #include "i2c_data.h"
 
+esp_err_t SHT35_read_out_status_register(uint8_t *data, size_t read_size);
+esp_err_t SHT35_single_shot_data_acquisition(uint8_t *data, size_t read_size, char clock_stretching, char repeatability);
 esp_err_t SHT35_read_measurements_periodic_mode(uint8_t *data, size_t read_size);
 esp_err_t SHT35_heater(char enable);
 esp_err_t SHT35_periodic_data_acquisition(int measurements_per_minute, char repeatability);

@@ -16,6 +16,6 @@
 #define I2C_MASTER_RX_BUF_DISABLE   0                          /*!< I2C master doesn't need buffer */
 #define I2C_MASTER_TIMEOUT_MS       1000
 
-#define SHT35_SENSOR_ADDR                 0x44
+#define SHT35_SENSOR_ADDR                 0x45
 
 #endif /* MAIN_I2C_DATA_H_ */
