@@ -74,8 +74,10 @@ void periodic_measurements_test()
     ESP_ERROR_CHECK(i2c_master_init());
     ESP_LOGI(TAG, "I2C initialized successfully");
 
+    vTaskDelay(pdMS_TO_TICKS(100));
+//    ESP_ERROR_CHECK(SHT35_soft_reset());
 
-    vTaskDelay(pdMS_TO_TICKS(10));
+    vTaskDelay(pdMS_TO_TICKS(100));
 
     ESP_ERROR_CHECK(SHT35_periodic_data_acquisition(60,'H'));
 
@@ -95,12 +97,15 @@ void periodic_measurements_test()
 	}
 }
 
-void app_main(void)
+
+void single_shot_measurements_test()
 {
+	printf("weeeejohhhh\n");
+
     ESP_ERROR_CHECK(i2c_master_init());
     ESP_LOGI(TAG, "I2C initialized successfully");
 
-	ESP_ERROR_CHECK(SHT35_soft_reset());
+//	ESP_ERROR_CHECK(SHT35_soft_reset());
 
     vTaskDelay(pdMS_TO_TICKS(10));
 
@@ -118,6 +123,15 @@ void app_main(void)
 		printf("Temperature: %f\n", temperature);
 		printf("Humidity:    %f\n", humidity);
     }
+}
+
+void app_main(void)
+{
+	periodic_measurements_test();
+
+//	single_shot_measurements_test();
+
+
 
 	/* GPIO18 is SCL
 	 * GPIO19 is SDA

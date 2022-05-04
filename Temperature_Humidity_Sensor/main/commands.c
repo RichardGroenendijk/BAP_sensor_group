@@ -218,7 +218,7 @@ esp_err_t SHT35_periodic_data_acquisition(int measurements_per_minute, char repe
 
 
 /* Simple single 16-bit commands */
-esp_err_t SHT35_soft_reset(void)
+esp_err_t SHT35_soft_reset(void) // WERKT NIET MEER !!!!
 {
 	uint8_t write_buffer[2] = {0x30, 0xA2};
 	uint8_t *buffer_ptr = write_buffer;
