@@ -14,6 +14,7 @@
 #include "communication.h"
 
 esp_err_t i2c_master_init(void);
+esp_err_t SHT35_single_measurement(int16_t *temp_ptr, uint16_t *hum_ptr);
 esp_err_t SHT35_read_out_status_register(uint8_t *data, size_t read_size);
 esp_err_t SHT35_read_and_print_status_register(void);
 esp_err_t SHT35_single_shot_data_acquisition(uint8_t *data, size_t read_size, _Bool clock_stretching, char repeatability);

@@ -25,6 +25,22 @@ esp_err_t i2c_master_init(void)
     return i2c_driver_install(i2c_master_port, conf.mode, I2C_MASTER_RX_BUF_DISABLE, I2C_MASTER_TX_BUF_DISABLE, 0);
 }
 
+esp_err_t SHT35_single_measurement(int16_t *temp_ptr, uint16_t *hum_ptr)
+{
+	uint8_t raw_data[6] = {0};
+	size_t raw_data_len=sizeof(raw_data);
+	uint8_t *raw_data_ptr = raw_data;
+
+	esp_err_t err = SHT35_single_shot_data_acquisition(raw_data_ptr, raw_data_len, false, 'H');
+
+	if(err != ESP_OK)
+		return err;
+
+	err = process_raw_temp_hum_values(raw_data_ptr, raw_data_len, temp_ptr, hum_ptr);
+
+	return err;
+}
+
 esp_err_t SHT35_read_out_status_register(uint8_t *data, size_t read_size)
 {
 	uint8_t write_buffer[2] = {0xF3, 0x2D};
