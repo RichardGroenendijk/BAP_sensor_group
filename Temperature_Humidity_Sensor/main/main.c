@@ -91,7 +91,7 @@ void periodic_measurements_test()
 		ESP_ERROR_CHECK(SHT35_read_measurements_periodic_mode(Temp_Hum, len));
 
 		float temperature = -45 + 175.0*((data[0] << 8) + data[1])/(65536.0 - 1);
-		float humidity = -49 + 315.0*((data[3] << 8) + data[4])/(65536.0 - 1);
+		float humidity = 100.0*((data[3] << 8) + data[4])/(65536.0 - 1);
 		printf("Temperature: %f\n", temperature);
 		printf("Humidity:    %f\n", humidity);
 	}
