@@ -8,6 +8,7 @@
 #include "communication.h"
 
 esp_err_t process_raw_temp_hum_values(uint8_t *data, size_t data_size, int16_t *temp_ptr, uint16_t *hum_ptr)
+/* Process the raw data from the sensor and put them into integers ready to transfer using the wireless protocol */
 {
 	if(data_size < 5 || data_size > 6)
 		return ESP_ERR_INVALID_ARG;
@@ -25,12 +26,14 @@ esp_err_t process_raw_temp_hum_values(uint8_t *data, size_t data_size, int16_t *
 }
 
 void print_sensor_values(int16_t *temp_ptr, uint16_t *hum_ptr)
+/* Print the sensor values, input should be pointers to 16 bit integers values for temperature and humidity */
 {
 	printf("Temperature: %.2f\n", *temp_ptr / 100.0);
 	printf("Humidity:    %.2f\n", *hum_ptr / 100.0);
 }
 
 esp_err_t print_status_register(uint8_t *data, size_t data_size)
+/* Prints the status register to the terminal in a convenient format */
 {
 	if(data_size < 2 || data_size > 3)
 		return ESP_ERR_INVALID_ARG;
@@ -59,7 +62,7 @@ esp_err_t print_status_register(uint8_t *data, size_t data_size)
 	if(rh_tracking_alert)
 		printf("'1': alert\n");
 	else
-		printf("'0' no alert\n");
+		printf("'0': no alert\n");
 
 	printf("T tracking alert\t\t- ");
 	if(t_tracking_alert)
