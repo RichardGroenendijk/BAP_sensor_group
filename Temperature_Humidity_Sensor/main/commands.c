@@ -44,7 +44,7 @@ esp_err_t SHT35_single_measurement(int16_t *temp_ptr, uint16_t *hum_ptr)
 	return err;
 }
 
-static int8_t SHT35_calculate_crc(uint8_t data[], uint8_t number_of_bytes)
+static uint8_t SHT35_calculate_crc(uint8_t data[], uint8_t number_of_bytes)
 {
 	uint8_t bit;		// bit mask
 	uint8_t crc = 0xFF;	// calculated checksum

@@ -42,7 +42,7 @@ typedef enum{
 
 esp_err_t i2c_master_init(void);
 esp_err_t SHT35_single_measurement(int16_t *temp_ptr, uint16_t *hum_ptr);
-static int8_t SHT35_calculate_crc(uint8_t data[], uint8_t number_of_bytes);
+static uint8_t SHT35_calculate_crc(uint8_t data[], uint8_t number_of_bytes);
 static esp_err_t SHT35_check_crc(uint8_t data[], uint8_t number_of_bytes, uint8_t checksum);
 esp_err_t SHT35_read_out_status_register(uint8_t *data, size_t read_size);
 esp_err_t SHT35_read_and_print_status_register(void);
