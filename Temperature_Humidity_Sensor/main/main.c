@@ -53,13 +53,13 @@ static void status_register_test();
 
 void app_main(void)
 {
-//	periodic_measurements_test2();
+	periodic_measurements_test2();
 
 //	single_shot_measurements_test();
 
 //	status_register_test();
 
-	SHT35_single_measurement_test();
+//	SHT35_single_measurement_test();
 
 
 //    vTaskDelay(pdMS_TO_TICKS(100));
@@ -84,7 +84,6 @@ static void SHT35_single_measurement_test()
 
 static void periodic_measurements_test()
 {
-	printf("weeeejohhhh\n");
 
     ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_init());
     ESP_LOGI(TAG, "I2C initialized successfully");
@@ -116,7 +115,6 @@ static void periodic_measurements_test()
 
 static void periodic_measurements_test2()
 {
-	printf("weeeejohhhh\n");
 
     ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_init());
     ESP_LOGI(TAG, "I2C initialized successfully");
@@ -124,13 +122,13 @@ static void periodic_measurements_test2()
 //    vTaskDelay(pdMS_TO_TICKS(1000));
 //    ESP_ERROR_CHECK_WITHOUT_ABORT(SHT35_soft_reset());
 
-    vTaskDelay(pdMS_TO_TICKS(1000));
+    vTaskDelay(pdMS_TO_TICKS(100));
 
-    ESP_ERROR_CHECK_WITHOUT_ABORT(SHT35_periodic_data_acquisition(FREQUENCY_1HZ,HIGH_REPEATABILITY));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(SHT35_periodic_data_acquisition(FREQUENCY_10HZ,HIGH_REPEATABILITY));
 
 	while(true)
 	{
-		vTaskDelay(pdMS_TO_TICKS(1000));
+		vTaskDelay(pdMS_TO_TICKS(100));
 
 		uint8_t data[6] = {0};
 		size_t len=sizeof(data);
@@ -141,7 +139,7 @@ static void periodic_measurements_test2()
 		uint16_t humidity;
 		ESP_ERROR_CHECK_WITHOUT_ABORT(process_raw_temp_hum_values(temp_hum, len, &temperature, &humidity));
 
-		print_sensor_values(&temperature, &humidity);
+//		print_sensor_values(&temperature, &humidity);
 	}
 }
 
