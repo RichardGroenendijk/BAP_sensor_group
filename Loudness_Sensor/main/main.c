@@ -6,14 +6,15 @@
 #include "nvs_flash.h"
 #include "driver/gpio.h"
 
+
 #include <string.h>
 #include <stdio.h>
 #include "sdkconfig.h"
 #include "esp_log.h"
+#include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/semphr.h"
 #include "driver/adc.h"
-
 
 //#include "adc.h"
 
@@ -30,19 +31,15 @@ static uint32_t adc2_chan_mask = BIT(0);
 
 
 
-//static uint16_t adc1_chan_mask = BIT(2) | BIT(3);
-//static uint16_t adc2_chan_mask = BIT(0);
-//static adc_channel_t channel[3] = {ADC1_CHANNEL_2, ADC1_CHANNEL_3, (ADC2_CHANNEL_0 | 1 << 3)};
 
-
-static const char *TAG = "ADC DMA";
+//static const char *TAG = "ADC DMA";
 
 
 
-esp_err_t event_handler(void *ctx, system_event_t *event)
-{
-    return ESP_OK;
-}
+//esp_err_t event_handler(void *ctx, system_event_t *event)
+//{
+//    return ESP_OK;
+//}
 
 void app_main(void)
 {
@@ -63,6 +60,33 @@ void app_main(void)
         .format = ADC_OUTPUT_TYPE,
     };
 
+    ESP_ERROR_CHECK(adc_digi_controller_configure(&dig_cfg));
+
+    esp_err_t adc_digi_start();
+
+
+    uint32_t length_max = 256;
+    int timeout_ms = 50;
+    uint8_t data = 0;
+    uint8_t *bufpoint = data;
+    //uint32_t data_length = 0;
+    uint32_t out_length = 0;
+    esp_err_t ret;
+
+    while(1){
+    ret = adc_digi_read_bytes(bufpoint, length_max, &out_length, timeout_ms);
+    printf("out length = %d\n data = %d\n", out_length, bufpoint);
+    for (int i = 0; i < out_length; i += ADC_RESULT_BYTE) {
+        adc_digi_output_data_t *p = (void*)&bufpoint[i];
+        printf("Unit: %d, Channel: %d, Value: %x", 1, p->type2.channel, p->type2.data);
+        //ESP_LOGI("Unit: %d, Channel: %d, Value: %x", 1, p->type1.channel, p->type1.data);
+    }
+    vTaskDelay(100);
+    //printf("test");
+    }
+    adc_digi_stop();
+
+    ret = adc_digi_deinitialize();
 
 
 
@@ -70,5 +94,8 @@ void app_main(void)
 
 
 
-};
+
+
+
+}
 
