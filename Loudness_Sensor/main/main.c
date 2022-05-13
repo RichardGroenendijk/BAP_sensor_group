@@ -50,7 +50,7 @@ void app_main(void)
         .adc2_chan_mask = adc2_chan_mask,
     };
 
-	ESP_ERROR_CHECK(adc_digi_initialize(&adc_dma_config));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(adc_digi_initialize(&adc_dma_config));
 
     adc_digi_configuration_t dig_cfg = {
         .conv_limit_en = ADC_CONV_LIMIT_EN,
@@ -60,9 +60,9 @@ void app_main(void)
         .format = ADC_OUTPUT_TYPE,
     };
 
-    ESP_ERROR_CHECK(adc_digi_controller_configure(&dig_cfg));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(adc_digi_controller_configure(&dig_cfg));
 
-    esp_err_t adc_digi_start();
+    ESP_ERROR_CHECK_WITHOUT_ABORT(adc_digi_start());
 
 
     uint32_t length_max = 256;
