@@ -27,8 +27,11 @@
 //
 //esp_err_t continuous_adc_init();
 
-#define ADC_ATTEN_CH1	ADC_ATTEN_11db
+#define ADC_ATTEN		ADC_ATTEN_11db
+#define ADC1_CHANNEL	ADC1_CHANNEL_0
 
+esp_err_t adc_config_init(void);
 bool adc_calibration_init(esp_adc_cal_characteristics_t *adc1_chars);
+void print_results(uint16_t *raw_ptr, uint16_t *voltage_ptr);
 
 #endif /* MAIN_ADC_COMMUNICATION_H_ */

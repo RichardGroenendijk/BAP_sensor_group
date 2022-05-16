@@ -7,16 +7,24 @@
 
 #include "adc_communication.h"
 
-esp_err_t single_measurement_config_init(void)
+static const char *TAG = "ADC";
+
+esp_err_t adc_config_init(void)
 {
-	return ESP_OK;
+	esp_err_t err;
+
+	err = adc1_config_width(ADC_WIDTH_BIT_DEFAULT);
+
+	if (err == ESP_OK)
+		err = adc1_config_channel_atten(ADC1_CHANNEL, ADC_ATTEN);
+
+	return err;
 }
 
 bool adc_calibration_init(esp_adc_cal_characteristics_t *adc1_chars)
 {
 	esp_err_t ret;
     bool cali_enable = false;
-    char *TAG = "ADC DMA";
 
     ret = esp_adc_cal_check_efuse(ESP_ADC_CAL_VAL_EFUSE_TP);
     if (ret == ESP_ERR_NOT_SUPPORTED) {
@@ -24,14 +32,22 @@ bool adc_calibration_init(esp_adc_cal_characteristics_t *adc1_chars)
     }
     else if (ret == ESP_ERR_INVALID_VERSION) {
     	ESP_LOGW(TAG, "eFuse not burnt, skip software calibration");
-    } else if (ret == ESP_OK) {
+    }
+    else if (ret == ESP_OK) {
     	cali_enable = true;
-    	esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_CH1, ADC_WIDTH_BIT_DEFAULT, 0, adc1_chars);
-    } else {
+    	esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN, ADC_WIDTH_BIT_DEFAULT, 0, adc1_chars);
+    }
+    else {
     	ESP_LOGE(TAG, "Invalid arg");
     }
 
     return cali_enable;
+}
+
+void print_results(uint16_t *raw_ptr, uint16_t *voltage_ptr)
+{
+	ESP_LOGI(TAG, "Raw data:     %d", *raw_ptr);
+	ESP_LOGI(TAG, "Calc voltage: %d mV", *voltage_ptr);
 }
 
 //esp_err_t continuous_adc_init(void)

@@ -7,13 +7,13 @@
 #include "driver/gpio.h"
 
 
-#include <string.h>
-#include <stdio.h>
-#include "sdkconfig.h"
-#include "esp_log.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "freertos/semphr.h"
+//#include <string.h>
+//#include <stdio.h>
+//#include "sdkconfig.h"
+//#include "esp_log.h"
+//#include "freertos/FreeRTOS.h"
+//#include "freertos/task.h"
+//#include "freertos/semphr.h"
 #include "adc_communication.h"
 
 //#include "adc.h"
@@ -31,10 +31,25 @@
 
 void app_main(void)
 {
-	printf("hallo\n");
 	esp_adc_cal_characteristics_t adc1_chars;
 	bool cali_enable = adc_calibration_init(&adc1_chars);
-	printf("Bool = %d\n", cali_enable);
+	if (cali_enable)
+		ESP_LOGI("ADC", "Calibrated correctly");
+
+	ESP_ERROR_CHECK_WITHOUT_ABORT(adc_config_init());
+
+	uint16_t adc_raw;
+	uint16_t voltage;
+
+	while (true)
+	{
+		adc_raw = adc1_get_raw(ADC1_CHANNEL);
+		voltage = esp_adc_cal_raw_to_voltage(adc_raw, &adc1_chars);
+
+		print_results(&adc_raw, &voltage);
+        vTaskDelay(pdMS_TO_TICKS(10));
+	}
+
 
 //	ESP_ERROR_CHECK_WITHOUT_ABORT(continuous_adc_init());
 //	ESP_ERROR_CHECK_WITHOUT_ABORT(adc_digi_start());
