@@ -29,9 +29,12 @@
 
 #define ADC_ATTEN		ADC_ATTEN_11db
 #define ADC1_CHANNEL	ADC1_CHANNEL_0
+#define SAMPLES			20
+#define THRESHOLD		700
 
 esp_err_t adc_config_init(void);
 bool adc_calibration_init(esp_adc_cal_characteristics_t *adc1_chars);
 void print_results(uint16_t *raw_ptr, uint16_t *voltage_ptr);
+float average_array(uint16_t *array, size_t array_size);
 
 #endif /* MAIN_ADC_COMMUNICATION_H_ */

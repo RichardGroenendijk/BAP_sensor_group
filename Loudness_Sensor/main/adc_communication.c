@@ -50,6 +50,16 @@ void print_results(uint16_t *raw_ptr, uint16_t *voltage_ptr)
 	ESP_LOGI(TAG, "Calc voltage: %d mV", *voltage_ptr);
 }
 
+float average_array(uint16_t *array, size_t array_size)
+{
+	float average = 0.0;
+
+	for (int i = 0; i < array_size; i++)
+		average += array[i];
+
+	return average/array_size;
+}
+
 //esp_err_t continuous_adc_init(void)
 //{
 //	esp_err_t err;

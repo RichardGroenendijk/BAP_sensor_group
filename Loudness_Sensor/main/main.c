@@ -5,7 +5,9 @@
 #include "esp_event_loop.h"
 #include "nvs_flash.h"
 #include "driver/gpio.h"
-
+#include "freertos/task.h"
+#include "freertos/queue.h"
+#include "driver/timer.h"
 
 //#include <string.h>
 //#include <stdio.h>
@@ -29,6 +31,45 @@
 //    return ESP_OK;
 //}
 
+void while_loop(esp_adc_cal_characteristics_t *adc1_chars)
+{
+	uint16_t adc_raw;
+	uint16_t voltage;
+
+	while (true)
+	{
+		adc_raw = adc1_get_raw(ADC1_CHANNEL);
+		voltage = esp_adc_cal_raw_to_voltage(adc_raw, adc1_chars);
+
+		print_results(&adc_raw, &voltage);
+        vTaskDelay(pdMS_TO_TICKS(10));
+	}
+}
+
+void rolling_average(esp_adc_cal_characteristics_t *adc1_chars)
+{
+	uint16_t adc_raw[SAMPLES] = {0};
+	uint16_t voltage[SAMPLES] = {0};
+	float rolling_average;
+
+	while (true)
+	{
+		for (int i = 0; i < (SAMPLES); i++)
+		{
+			adc_raw[i] = adc1_get_raw(ADC1_CHANNEL);
+			voltage[i] = esp_adc_cal_raw_to_voltage(adc_raw[i], adc1_chars);
+
+			rolling_average = average_array(voltage, SAMPLES);
+
+			if (rolling_average > THRESHOLD)
+				ESP_LOGI("ADC", "Rolling average: %f", rolling_average);
+
+			vTaskDelay(pdMS_TO_TICKS(10));
+		}
+
+	}
+}
+
 void app_main(void)
 {
 	esp_adc_cal_characteristics_t adc1_chars;
@@ -38,18 +79,22 @@ void app_main(void)
 
 	ESP_ERROR_CHECK_WITHOUT_ABORT(adc_config_init());
 
-	uint16_t adc_raw;
-	uint16_t voltage;
+//	uint16_t adc_raw;
+//	uint16_t voltage;
+//	esp_timer_handle_t timer;
+//
+//	timer_start(timer);
+//
+//	while (true)
+//	{
+//		adc_raw = adc1_get_raw(ADC1_CHANNEL);
+//		voltage = esp_adc_cal_raw_to_voltage(adc_raw, &adc1_chars);
+//
+//		print_results(&adc_raw, &voltage);
+//        vTaskDelay(pdMS_TO_TICKS(10));
+//	}
 
-	while (true)
-	{
-		adc_raw = adc1_get_raw(ADC1_CHANNEL);
-		voltage = esp_adc_cal_raw_to_voltage(adc_raw, &adc1_chars);
-
-		print_results(&adc_raw, &voltage);
-        vTaskDelay(pdMS_TO_TICKS(10));
-	}
-
+	rolling_average(&adc1_chars);
 
 //	ESP_ERROR_CHECK_WITHOUT_ABORT(continuous_adc_init());
 //	ESP_ERROR_CHECK_WITHOUT_ABORT(adc_digi_start());
