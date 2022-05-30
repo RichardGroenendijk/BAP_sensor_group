@@ -1,5 +1,5 @@
 /*
- * adc_communication.c
+ * loudness_sensor.c
  *
  *  Created on: 13 May 2022
  *      Author: Richard & Tom

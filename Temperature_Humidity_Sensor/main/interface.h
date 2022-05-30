@@ -1,5 +1,5 @@
 /*
- * communication.h
+ * interface.h
  *
  *  Created on: 6 May 2022
  *      Author: Richard & Tom

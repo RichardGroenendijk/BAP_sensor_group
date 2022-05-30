@@ -1,5 +1,5 @@
 /*
- * commands.h
+ * i2c_commands.h
  *
  *  Created on: 3 May 2022
  *      Author: Richard & Tom
