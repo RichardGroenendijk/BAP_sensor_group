@@ -6,8 +6,8 @@
 #include "driver/gpio.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
-//#include "driver/timer.h"
-#include "adc_communication.h"
+
+#include "loudness_sensor.h"
 
 void while_loop(esp_adc_cal_characteristics_t *adc1_chars)
 {

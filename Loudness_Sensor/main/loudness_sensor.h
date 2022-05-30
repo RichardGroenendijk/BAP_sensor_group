@@ -5,8 +5,8 @@
  *      Author: Richard & Tom
  */
 
-#ifndef MAIN_ADC_COMMUNICATION_H_
-#define MAIN_ADC_COMMUNICATION_H_
+#ifndef MAIN_LOUDNESS_SENSOR_H_
+#define MAIN_LOUDNESS_SENSOR_H_
 
 #include "driver/adc.h"
 #include "esp_adc_cal.h"
@@ -31,4 +31,4 @@ float std_dev_array(uint16_t *array, size_t size, float mean);
 float median_array(uint16_t *array, size_t array_size);
 int compare_func(const void * a, const void * b);
 
-#endif /* MAIN_ADC_COMMUNICATION_H_ */
+#endif /* MAIN_LOUDNESS_SENSOR_H_ */

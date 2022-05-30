@@ -5,7 +5,7 @@
  *      Author: Richard & Tom
  */
 
-#include "adc_communication.h"
+#include "loudness_sensor.h"
 
 static const char *TAG = "ADC";
 
