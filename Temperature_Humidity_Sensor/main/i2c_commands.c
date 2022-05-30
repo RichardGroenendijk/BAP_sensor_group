@@ -5,7 +5,7 @@
  *      Author: Richard & Tom
  */
 
-#include "commands.h"
+#include "i2c_commands.h"
 
 esp_err_t i2c_master_init(void)
 /* Initialization function of the I2C protocol on the master side (ESP32) */

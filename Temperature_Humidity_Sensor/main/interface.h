@@ -5,8 +5,8 @@
  *      Author: Richard & Tom
  */
 
-#ifndef MAIN_COMMUNICATION_H_
-#define MAIN_COMMUNICATION_H_
+#ifndef MAIN_INTERFACE_H_
+#define MAIN_INTERFACE_H_
 
 #include "esp_err.h"
 #include <math.h>
@@ -15,4 +15,4 @@ esp_err_t process_raw_temp_hum_values(uint8_t *data, size_t data_size, int16_t *
 void print_sensor_values(int16_t *temp_ptr, uint16_t *hum_ptr);
 esp_err_t print_status_register(uint8_t *data, size_t data_size);
 
-#endif /* MAIN_COMMUNICATION_H_ */
+#endif /* MAIN_INTERFACE_H_ */

@@ -2,48 +2,15 @@
 #include "esp_wifi.h"
 #include "esp_system.h"
 #include "esp_event.h"
-#include "esp_event_loop.h"
 #include "nvs_flash.h"
 #include "driver/gpio.h"
 #include <stdio.h>
 #include "esp_log.h"
 #include "driver/i2c.h"
-#include "commands.h"
-#include "communication.h"
+#include "i2c_commands.h"
+#include "interface.h"
 
-static const char *TAG = "i2c-simple-example";
-
-/**
- * @brief Read a sequence of bytes from a MPU9250 sensor registers
- */
-static esp_err_t SHT35_register_read(uint8_t reg_addr, uint8_t *data, size_t len)
-{
-    return i2c_master_write_read_device(I2C_MASTER_NUM, SHT35_SENSOR_ADDR, &reg_addr, 1, data, len, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
-}
-
-/**
- * @brief Write a byte to a MPU9250 sensor register
- */
-static esp_err_t SHT35_register_write_byte(int write_buffer)
-{
-	uint8_t data[2] = {(write_buffer >> 8), (write_buffer&0xFF)};
-	uint8_t *pointer = data;
-	uint8_t lengthofdata = sizeof(data);
-	printf(" the size of the data %u",lengthofdata);
-
-
-    int ret;
-    /*uint8_t write_buf[2] = {reg_addr, data};*/
-
-    ret = i2c_master_write_to_device(I2C_MASTER_NUM, SHT35_SENSOR_ADDR, pointer, lengthofdata, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
-
-    return ret;
-}
-
-esp_err_t event_handler(void *ctx, system_event_t *event)
-{
-    return ESP_OK;
-}
+static const char *TAG = "i2c";
 
 static void SHT35_single_measurement_test();
 static void periodic_measurements_test();

@@ -5,7 +5,7 @@
  *      Author: Richard & Tom
  */
 
-#include "communication.h"
+#include "interface.h"
 
 esp_err_t process_raw_temp_hum_values(uint8_t *data, size_t data_size, int16_t *temp_ptr, uint16_t *hum_ptr)
 /* Process the raw data from the sensor and put them into integers ready to transfer using the wireless protocol */
